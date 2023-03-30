@@ -5,9 +5,8 @@ Feature: Add Items to Cart
 
   Scenario: Add n items to cart and log out
     Given the user is logged in
-    When the user adds n items to the cart
-    Then the cart should have "n" items
-    And each item should be displayed in the cart
+    When the user adds {n} items to the cart
+    Then the cart should have {n} items
     When the user logs out
     Then the user should be redirected to the login page
 
@@ -24,7 +23,6 @@ Feature: Add Items to Cart
     Given the user is on the product page
     When the user adds n items to the cart again
     Then the cart should have "n" items
-    And each item should be displayed in the cart
     And the user logs out again
     And the user logs back in
     Then the cart should still have "n" items

@@ -75,7 +75,7 @@ public class CartStepDefinitions {
 
     @Then("^the cart should have \"([^\"]*)\" items$")
     public void the_cart_should_have_something_items(String strArg1) throws Throwable {
-
+        
     }
 
     @Then("^the user should be redirected to the login page$")
@@ -88,10 +88,6 @@ public class CartStepDefinitions {
 
     }
 
-    @And("^each item should be displayed in the cart$")
-    public void each_item_should_be_displayed_in_the_cart() throws Throwable {
-
-    }
 
     @And("^the user removes 1 item from the cart$")
     public void the_user_removes_1_item_from_the_cart() throws Throwable {

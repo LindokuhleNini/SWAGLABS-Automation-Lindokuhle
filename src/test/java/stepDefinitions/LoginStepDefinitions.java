@@ -18,18 +18,16 @@ import java.util.concurrent.TimeUnit;
 public class LoginStepDefinitions {
     public WebDriver driver;
     public TestBase testBase;
-    public LoginPage loginPage;
+
     public static CartPage cartPage;
-    public static TestContextSetup testContextSetup;
+    public static TestContextSetup testContextSetup = new TestContextSetup();
+    public LoginPage loginPage = testContextSetup.pageObjectManager.getLoginPage();
     public PageObjectManager pageObjectManager;
 
-    public LoginStepDefinitions(TestContextSetup testContextSetup){
-        this.testContextSetup = testContextSetup;
-        this.loginPage = testContextSetup.pageObjectManager.getLoginPage();
-    }
     @Given("^I am on the login page$")
     public void i_am_on_the_login_page() throws Throwable {
-
+       /* testContextSetup = new TestContextSetup();
+        loginPage = testContextSetup.pageObjectManager.getLoginPage();*/
     }
 
     @When("^I enter wrong username \"([^\"]*)\" and correct password \"([^\"]*)\"$")
@@ -37,7 +35,9 @@ public class LoginStepDefinitions {
         username = ExcelHelper.getCellDataString(1, 0);
         password = ExcelHelper.getCellDataString(1, 1);
         loginPage.setUsername(username);
+        Thread.sleep(1000);
         loginPage.setPassword(password);
+        Thread.sleep(1000);
     }
 
     @When("^I enter a correct password \"([^\"]*)\" and an empty username \"([^\"]*)\"$")
@@ -45,7 +45,9 @@ public class LoginStepDefinitions {
         username = "";
         password = ExcelHelper.getCellDataString(2, 1);
         loginPage.setUsername(username);
+        Thread.sleep(1000);
         loginPage.setPassword(password);
+        Thread.sleep(1000);
     }
 
     @When("^I enter a correct username \"([^\"]*)\" and a wrong password \"([^\"]*)\"$")
@@ -53,7 +55,9 @@ public class LoginStepDefinitions {
         username = ExcelHelper.getCellDataString(3, 0);
         password = ExcelHelper.getCellDataString(3, 1);
         loginPage.setUsername(username);
+        Thread.sleep(1000);
         loginPage.setPassword(password);
+        Thread.sleep(1000);
     }
 
     @When("^I enter a correct username \"([^\"]*)\" and an empty password \"([^\"]*)\"$")
@@ -61,7 +65,9 @@ public class LoginStepDefinitions {
         username = ExcelHelper.getCellDataString(4, 0);
         password = "";
         loginPage.setUsername(username);
+        Thread.sleep(1000);
         loginPage.setPassword(password);
+        Thread.sleep(1000);
     }
 
     @When("^I enter a wrong username \"([^\"]*)\" and a wrong password \"([^\"]*)\"$")
@@ -69,7 +75,9 @@ public class LoginStepDefinitions {
         username = ExcelHelper.getCellDataString(5, 0);
         password = ExcelHelper.getCellDataString(5, 1);
         loginPage.setUsername(username);
+        Thread.sleep(1000);
         loginPage.setPassword(password);
+        Thread.sleep(1000);
     }
 
     @When("^I enter a correct username \"([^\"]*)\" and a correct password \"([^\"]*)\"$")
@@ -77,7 +85,9 @@ public class LoginStepDefinitions {
         username = "standard_user";
         password = "secret_sauce";
         loginPage.setUsername(username);
+        Thread.sleep(1000);
         loginPage.setPassword(password);
+        Thread.sleep(1000);
 
     }
 
@@ -88,7 +98,7 @@ public class LoginStepDefinitions {
 
     @Then("^I should be logged in to my account$")
     public void i_should_be_logged_in_to_my_account() throws Throwable {
-
+       // assert loginPage.errorVisible().
     }
 
     @And("^click the login button$")
@@ -97,7 +107,9 @@ public class LoginStepDefinitions {
         Thread.sleep(1000);
 
         if (loginPage.errorVisible()){
-            testContextSetup.testBase.setupBrowser().quit();
+            //testContextSetup.testBase.setupBrowser().quit();
+            loginPage.clearUsername();
+            loginPage.clearPassword();
         }
     }
 

@@ -17,14 +17,15 @@ public class OrderStepDefinitions {
     public LoginPage loginPage;
     public CheckoutPage checkoutPage;
 
-    @Given("^the user is on the login page$")
-    public void the_user_is_on_the_login_page() throws Throwable {
+    @Given("^the user is on the login page2$")
+    public void the_user_is_on_the_login_page2() throws Throwable {
         testContextSetup = new TestContextSetup();
         loginPage = testContextSetup.pageObjectManager.getLoginPage();
     }
 
-    @When("^the user logs in with valid credentials$")
-    public void the_user_logs_in_with_valid_credentials() throws Throwable {
+    @When("^the user logs in with valid credentials2$")
+    public void the_user_logs_in_with_valid_credentials2() throws Throwable {
+
         String username = "standard_user";
         String password = "secret_sauce";
         loginPage.setUsername(username);
@@ -33,8 +34,8 @@ public class OrderStepDefinitions {
         Thread.sleep(1000);
     }
 
-    @And("^the user adds 4 items to the cart$")
-    public void the_user_adds_4_items_to_the_cart() throws Throwable {
+    @And("^the user adds 4 items to the cart2$")
+    public void the_user_adds_4_items_to_the_cart2() throws Throwable {
         cartPage = testContextSetup.pageObjectManager.getCartPage();
         cartPage.addToCart(4);
     }
@@ -45,9 +46,10 @@ public class OrderStepDefinitions {
         assert cartPage.getCartCount().equals("4");
     }
 
-    @When("^the user proceeds to checkout$")
-    public void the_user_proceeds_to_checkout() throws Throwable {
+    @When("^the user proceeds to checkout2$")
+    public void the_user_proceeds_to_checkout2() throws Throwable {
         cartPage = testContextSetup.pageObjectManager.getCartPage();
+        cartPage.openCart();
         cartPage.goToCheckout();
     }
 
