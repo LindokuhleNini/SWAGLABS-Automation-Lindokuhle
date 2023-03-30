@@ -19,6 +19,7 @@ public class CartPage{
     private By allProducts = By.id("inventory_sidebar_link");
     private By removeItem = By.id("remove-sauce-labs-bike-light");
     private By checkoutBtn = By.id("checkout");
+    private By cartCount = By.cssSelector("#shopping_cart_container > a > span");
     public static int count = 0;
 
     public CartPage(WebDriver driver){
@@ -36,6 +37,10 @@ public class CartPage{
                 count++;
             }
         }
+    }
+
+    public String getCartCount(){
+        return driver.findElement(cartCount).getText();
     }
 
     public void goToAllItems() throws InterruptedException {
