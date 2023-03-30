@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/Users/Hp/IdeaProjects/SWAGLABS-Automation-Lindokuhle">
-        <parameter name="browser" value="chrome"/>
+        <parameter name="browser" value="edge"/>
         <parameter name="url" value="https://www.saucedemo.com/"/>
         <classes>
             <class name="cucumberOptions.Run" />

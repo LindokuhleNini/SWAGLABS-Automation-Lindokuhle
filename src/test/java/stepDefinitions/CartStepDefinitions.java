@@ -145,5 +145,6 @@ public class CartStepDefinitions {
         testContextSetup.testBase.setupBrowser().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         //testContextSetup.testBase.setupBrowser().quit();
         CartPage.count = 0;
+        testContextSetup.testBase.setupBrowser().quit();
     }
 }

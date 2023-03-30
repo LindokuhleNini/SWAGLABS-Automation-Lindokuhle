@@ -1,6 +1,7 @@
 package pageObjects;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 public class CartPage{
@@ -17,6 +18,7 @@ public class CartPage{
     private By cartBtn = By.className("shopping_cart_link");
     private By allProducts = By.id("inventory_sidebar_link");
     private By removeItem = By.id("remove-sauce-labs-bike-light");
+    private By checkoutBtn = By.id("checkout");
     public static int count = 0;
 
     public CartPage(WebDriver driver){
@@ -49,6 +51,12 @@ public class CartPage{
 
     public void openCart(){
         driver.findElement(cartBtn).click();
+    }
+
+    public void goToCheckout(){
+        /*JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,500)");*/
+        driver.findElement(checkoutBtn).click();
     }
 
     public void logout() throws InterruptedException {
