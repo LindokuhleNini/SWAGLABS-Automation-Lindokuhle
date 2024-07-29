@@ -16,6 +16,7 @@ public class TestBase {
     TestContextSetup testContextSetup;
 
     public WebDriver setupBrowser(){
+        //browser
         String browser = "edge";
         String url = "https://www.saucedemo.com/";
 
